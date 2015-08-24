@@ -28,8 +28,8 @@ gem 'active_model_serializers'
 
 gem "devise"
 
-gem 'sunspot_rails'
-gem 'sunspot_solr'
+# gem 'sunspot_rails'
+# gem 'sunspot_solr'
 
 gem 'sabisu_rails', github: "IcaliaLabs/sabisu-rails"
 gem 'compass-rails'
