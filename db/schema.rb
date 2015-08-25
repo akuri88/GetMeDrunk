@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150821000437) do
+ActiveRecord::Schema.define(version: 20150824231926) do
 
   create_table "promotions", force: :cascade do |t|
     t.float    "lat"
@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(version: 20150821000437) do
     t.integer  "activated"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
+    t.integer  "user_id"
   end
 
   create_table "users", force: :cascade do |t|
