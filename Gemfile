@@ -28,6 +28,8 @@ gem 'active_model_serializers'
 
 gem "devise"
 
+gem 'geokit-rails'
+
 # gem 'sunspot_rails'
 # gem 'sunspot_solr'
 

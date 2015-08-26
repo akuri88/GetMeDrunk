@@ -8,6 +8,6 @@ FactoryGirl.define do
     date_expire '20150101'
     time_expire '19900101 12:00:00'
     product_name 'alcohol' # { FFaker::Promotion.product_name }
-    user_id '1'
+    user
   end
 end

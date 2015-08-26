@@ -5,6 +5,7 @@ describe User do
 
   subject { @user }
 
+  it { should have_many(:promotions).dependent(:destroy) }
   it { should respond_to(:email) }
   it { should respond_to(:password) }
   it { should respond_to(:password_confirmation) }
