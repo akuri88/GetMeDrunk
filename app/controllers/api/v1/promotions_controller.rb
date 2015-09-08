@@ -7,7 +7,7 @@ class Api::V1::PromotionsController < ApplicationController
   # /promotions
   # get(params)
   def index
-    @promotions = Promotion.search(search_params)
+    @promotions = Promotion.all #.search(search_params)
     #respond_with @promotions
     render json: @promotions
   end
@@ -18,7 +18,7 @@ class Api::V1::PromotionsController < ApplicationController
   end
 
   def create
-    promotion = current_user.promotions.new(save_params) 
+    promotion = current_user.promotions.new(save_params)
     if promotion.save
       render json: promotion, status: 201
     else
@@ -29,7 +29,7 @@ class Api::V1::PromotionsController < ApplicationController
   # PUT PATCH /promotions/:id
   def update
     promotion = current_user.promotions.find(params[:id])
-    if promotion.update(promotion_params)
+    if promotion.update(save_params)
       render json: promotion, status: 200, location: [:api, promotion]
     else
       render json: { errors: promotion.errors }, status: 422
