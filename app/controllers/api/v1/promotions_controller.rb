@@ -1,6 +1,6 @@
 # Promotion Controller for API
 class Api::V1::PromotionsController < ApplicationController
-  before_action :authenticate_with_token!, only: [:update, :destroy]
+  before_action :authenticate_with_token!, only: [:create, :update, :destroy]
   respond_to :json
 
 
@@ -14,13 +14,13 @@ class Api::V1::PromotionsController < ApplicationController
 
   # /promotions/:id
   def show
-    respond_with Promotion.find(params[:id]) 
+    respond_with Promotion.find(params[:id])
   end
 
   def create
-    promotion = Promotion.new(save_params) 
+    promotion = current_user.promotions.new(save_params) 
     if promotion.save
-      render json: promotion, status: 201 
+      render json: promotion, status: 201
     else
       render json: { errors: promotion.errors }, status: 422
     end
@@ -30,14 +30,14 @@ class Api::V1::PromotionsController < ApplicationController
   def update
     promotion = current_user.promotions.find(params[:id])
     if promotion.update(promotion_params)
-      render json: promotion, status: 200, location: [:api, promotion] 
+      render json: promotion, status: 200, location: [:api, promotion]
     else
       render json: { errors: promotion.errors }, status: 422
     end
   end
 
   def destroy
-    promotion = current_user.promotions.find(params[:id]) 
+    promotion = current_user.promotions.find(params[:id])
     promotion.destroy
     head 204
   end

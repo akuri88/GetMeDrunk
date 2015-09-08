@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150824231926) do
+ActiveRecord::Schema.define(version: 20150908010759) do
 
   create_table "promotions", force: :cascade do |t|
     t.float    "lat"
@@ -29,6 +29,8 @@ ActiveRecord::Schema.define(version: 20150824231926) do
     t.datetime "updated_at",     null: false
     t.integer  "user_id"
   end
+
+  add_index "promotions", ["user_id"], name: "index_promotions_on_user_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
